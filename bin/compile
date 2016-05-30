@@ -33,7 +33,7 @@ fi
 echo "-----> Use build cache"
 if [ -f $CACHE_DIR/eggs.tgz ]; then
     echo "Get buildout results from the previous build" | indent
-    tar xvfz $CACHE_DIR/eggs.tgz $BUILD_DIR
+    tar xvfz $CACHE_DIR/eggs.tgz -C $BUILD_DIR/
 else
     echo "Cache empty, start from scratch" | indent
 fi
@@ -132,7 +132,7 @@ rm -rf $CACHE_DIR/eggs.tgz
 #rm -rf $CACHE_DIR/parts
 #rm -rf $CACHE_DIR/var
 #
-tar cvfz $CACHE_DIR/eggs.tgz $BUILD_DIR/eggs
+tar cvfz $CACHE_DIR/eggs.tgz -C $BUILD_DIR eggs
 #cp -r $BUILD_DIR/bin $CACHE_DIR
 #cp -r $BUILD_DIR/eggs $CACHE_DIR
 #cp -r $BUILD_DIR/parts $CACHE_DIR
