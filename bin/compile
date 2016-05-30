@@ -29,7 +29,7 @@ if [ -f $ENV_DIR/PYPICLOUD_USERNAME ] && [ -f $ENV_DIR/PYPICLOUD_PASSWORD ]; the
 fi
 
 echo "-----> Use build cache"
-if [ -d $CACHE_DIR/bin ]; then
+if [ -d $CACHE_DIR/eggs.tgz ]; then
     echo "Get buildout results from the previous build" | indent
     tar xvfz $CACHE_DIR/eggs.tgz $BUILD_DIR
 else
