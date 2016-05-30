@@ -2,6 +2,8 @@
 
 set -eo pipefail
 
+[[ $DOKKU_TRACE ]] && set -x
+
 # Heroku has opinions on indentation, let's respect them
 indent() {
   sed -u 's/^/       /'
