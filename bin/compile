@@ -28,18 +28,19 @@ if [ -f $ENV_DIR/PYPICLOUD_USERNAME ] && [ -f $ENV_DIR/PYPICLOUD_PASSWORD ]; the
     export "PYPICLOUD_PASSWORD=$(cat $ENV_DIR/PYPICLOUD_PASSWORD)"
 fi
 
-echo "-----> Use build cache"
-if [ -d $CACHE_DIR/bin ]; then
-    echo "Get buildout results from the previous build" | indent
-    cp -r $CACHE_DIR/bin  $BUILD_DIR/
-    cp -r $CACHE_DIR/eggs  $BUILD_DIR/
-    cp -r $CACHE_DIR/parts  $BUILD_DIR/
-    if [ -d $BUILD_DIR/var ]; then
-        cp -r $CACHE_DIR/var  $BUILD_DIR/
-    fi
-else
-    echo "Cache empty, start from scratch" | indent
-fi
+echo "-----> Not using cache anymore"
+#echo "-----> Use build cache"
+#if [ -d $CACHE_DIR/bin ]; then
+#    echo "Get buildout results from the previous build" | indent
+#    cp -r $CACHE_DIR/bin  $BUILD_DIR/
+#    cp -r $CACHE_DIR/eggs  $BUILD_DIR/
+#    cp -r $CACHE_DIR/parts  $BUILD_DIR/
+#    if [ -d $BUILD_DIR/var ]; then
+#        cp -r $CACHE_DIR/var  $BUILD_DIR/
+#    fi
+#else
+#    echo "Cache empty, start from scratch" | indent
+#fi
 
 echo "-----> Read BUILDOUT_CFG from env vars, or use default"
 if [ -f $ENV_DIR/BUILDOUT_CFG ]; then
@@ -116,17 +117,17 @@ echo "$VERSION_SETUPTOOLS" | indent
 echo "-----> Run bin/buildout -c ${BUILDOUT_CFG} ${BUILDOUT_VERBOSITY}"
 bin/buildout -c $BUILDOUT_CFG $BUILDOUT_VERBOSITY
 
-echo "-----> Copy results to cache"
-rm -rf $CACHE_DIR/bin
-rm -rf $CACHE_DIR/eggs
-rm -rf $CACHE_DIR/parts
-rm -rf $CACHE_DIR/var
-
-cp -r $BUILD_DIR/bin $CACHE_DIR
-cp -r $BUILD_DIR/eggs $CACHE_DIR
-cp -r $BUILD_DIR/parts $CACHE_DIR
-if [ -d $BUILD_DIR/var ]; then
-    cp -r $BUILD_DIR/var $CACHE_DIR
-fi
+#echo "-----> Copy results to cache"
+#rm -rf $CACHE_DIR/bin
+#rm -rf $CACHE_DIR/eggs
+#rm -rf $CACHE_DIR/parts
+#rm -rf $CACHE_DIR/var
+#
+#cp -r $BUILD_DIR/bin $CACHE_DIR
+#cp -r $BUILD_DIR/eggs $CACHE_DIR
+#cp -r $BUILD_DIR/parts $CACHE_DIR
+#if [ -d $BUILD_DIR/var ]; then
+#    cp -r $BUILD_DIR/var $CACHE_DIR
+#fi
 
 echo "Done" | indent
