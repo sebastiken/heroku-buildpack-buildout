@@ -127,7 +127,7 @@ echo "-----> Run bin/buildout -c ${BUILDOUT_CFG} ${BUILDOUT_VERBOSITY}"
 bin/buildout -c $BUILDOUT_CFG $BUILDOUT_VERBOSITY
 
 # Odoo support
-source $BIN_DIR/steps/buildout
+source $BIN_DIR/steps/odoo
 
 echo "-----> Copy results to cache"
 rm -rf $CACHE_DIR/eggs.tgz
