@@ -126,6 +126,9 @@ echo "$VERSION_SETUPTOOLS" | indent
 echo "-----> Run bin/buildout -c ${BUILDOUT_CFG} ${BUILDOUT_VERBOSITY}"
 bin/buildout -c $BUILDOUT_CFG $BUILDOUT_VERBOSITY
 
+# Odoo support
+source $BIN_DIR/steps/buildout
+
 echo "-----> Copy results to cache"
 rm -rf $CACHE_DIR/eggs.tgz
 rm -rf $CACHE_DIR/parts.tgz
