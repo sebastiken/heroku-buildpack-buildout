@@ -9,6 +9,8 @@ indent() {
   sed -u 's/^/       /'
 }
 
+# Paths.
+BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 BUILD_DIR=$1  # -> temp dir that contains whatever is in the git repo
 CACHE_DIR=$2  # -> use this dir for caching between compiles
 ENV_DIR=$3  # -> environment variables are stored as files inside here
