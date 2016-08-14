@@ -2,7 +2,7 @@
 
 set -eo pipefail
 
-[[ $DOKKU_TRACE ]] && set -x
+[ "$BUILDPACK_XTRACE" ] && set -o xtrace
 
 # Heroku has opinions on indentation, let's respect them
 indent() {
@@ -14,6 +14,7 @@ BIN_DIR=$(cd $(dirname $0); pwd) # absolute path
 BUILD_DIR=$1  # -> temp dir that contains whatever is in the git repo
 CACHE_DIR=$2  # -> use this dir for caching between compiles
 ENV_DIR=$3  # -> environment variables are stored as files inside here
+APP_DIR='/app'
 
 # make sure dirs exist
 mkdir -p $CACHE_DIR

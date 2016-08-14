@@ -2,6 +2,8 @@
 
 set -eo pipefail
 
+[ "$BUILDPACK_XTRACE" ] && set -o xtrace
+
 if [ -f buildout.cfg ]; then
 
     if (grep -iq "^recipe\s*=\s*anybox\.recipe\.odoo.*$" buildout.cfg) then
@@ -33,6 +35,11 @@ CMD=\$1
 shift
 /app/bin/"\$CMD" "\$@" --xmlrpc-port=\$PORT
 EOF
+
+for script in $BUILD_DIR/bin/*; do
+    echo $script
+    sed -i 's|'$BUILD_DIR'|'$APP_DIR'|g' $script
+done
 
     chmod 755 "$BUILD_DIR/bin/env_wrapper"
 
