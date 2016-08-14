@@ -41,7 +41,7 @@ EOF
         sed -i 's|'$BUILD_DIR'|'$APP_DIR'|g' $script
     done
 
-    sed -i 's|'$BUILD_DIR'|'$APP_DIR'|g' $APP_DIR/etc/openerp.cfg
+    sed -i 's|'$BUILD_DIR'|'$APP_DIR'|g' $BUILD_DIR/etc/openerp.cfg
 
     chmod 755 "$BUILD_DIR/bin/env_wrapper"
 
