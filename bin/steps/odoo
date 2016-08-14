@@ -36,10 +36,12 @@ shift
 /app/bin/"\$CMD" "\$@" --xmlrpc-port=\$PORT
 EOF
 
-for script in $BUILD_DIR/bin/*; do
-    echo $script
-    sed -i 's|'$BUILD_DIR'|'$APP_DIR'|g' $script
-done
+    for script in $BUILD_DIR/bin/*; do
+        echo $script
+        sed -i 's|'$BUILD_DIR'|'$APP_DIR'|g' $script
+    done
+
+    sed -i 's|'$BUILD_DIR'|'$APP_DIR'|g' $APP_DIR/etc/openerp.cfg
 
     chmod 755 "$BUILD_DIR/bin/env_wrapper"
 
