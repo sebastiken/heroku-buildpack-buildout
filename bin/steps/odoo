@@ -6,7 +6,7 @@ set -eo pipefail
 
 if [ -f buildout.cfg ]; then
 
-    if (grep -iq "^recipe\s*=\s*anybox\.recipe\.odoo.*$" buildout.cfg) then
+    if (grep -iq "^recipe\s*=\s*anybox\.recipe\.\(openerp\|odoo\):.*$" buildout.cfg) then
         cat <<EOF > "$BUILD_DIR/bin/env_wrapper"
 #!/usr/bin/env bash
 set -e
