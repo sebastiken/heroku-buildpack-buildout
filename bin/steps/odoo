@@ -29,7 +29,7 @@ sed -i 's|ENV_DB_NAME|'\$DATABASE'|g' /app/etc/openerp.cfg
 sed -i 's|ENV_EMAIL_FROM|'\$EMAIL_FROM'|g' /app/etc/openerp.cfg
 
 # Quitar chequeo de usuario postgres
-sed -i 's/    check_postgres_user()/    print "skipping postgres user check"/g' parts/odoo/openerp/cli/server.py
+sed -i 's/    check_postgres_user()/    print "skipping postgres user check"/g' parts/odoo/*/cli/server.py
 
 CMD=\$1
 shift
